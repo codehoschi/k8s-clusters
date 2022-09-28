@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cluster-settings-sidero-management
+  namespace: flux-system
+data:
+  CLUSTER_NAME: sider-management
+  CLUSTER_ID: '0'

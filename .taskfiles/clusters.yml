@@ -1,0 +1,9 @@
+---
+version: '3'
+
+tasks:
+  bootstrap-sops:
+    desc: Bootstrap cluster SOPS
+    cmds:
+      - kubectl create ns flux-system
+      - cat ~/.config/sops/age/keys.txt | kubectl -n flux-system create secret generic sops-age --from-file=age.agekey=/dev/stdin
