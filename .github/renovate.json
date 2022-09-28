@@ -1,5 +1,4 @@
 {
-  // General RenovateBot configuration
   "extends": [
     ":enableRenovate",
     "config:base",
@@ -24,7 +23,7 @@
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
-  // Set up Renovate Managers
+
   "helm-values": {
     "fileMatch": ["manifests/.+helm-release\\.yaml$"]
   },
@@ -35,7 +34,6 @@
     "fileMatch": ["manifests/.+\\.ya?ml$"]
   },
   "regexManagers": [
-    // regexManager to read and process GitHub release artifacts
     {
       "fileMatch": ["manifests/.+helm-release\\.yaml$"],
       "matchStrings": [
@@ -50,7 +48,6 @@
     }
   ],
   "packageRules": [
-    // Setup datasources
     {
       "packagePatterns": ["rook-ceph-cluster", "rook-ceph"],
       "enabled": true,
