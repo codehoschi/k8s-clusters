@@ -6,11 +6,12 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./manifests/sidero-management/gitops
-  prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
+  path: ./manifests/sidero-management/gitops
+  prune: true
+  validation: client
   decryption:
     provider: sops
     secretRef:
