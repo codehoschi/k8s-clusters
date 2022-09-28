@@ -5,5 +5,5 @@ metadata:
   name: cluster-settings-sidero-management
   namespace: flux-system
 data:
-  CLUSTER_NAME: sider-management
+  CLUSTER_NAME: sidero-management
   CLUSTER_ID: '0'
