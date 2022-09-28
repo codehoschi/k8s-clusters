@@ -1,0 +1,40 @@
+# Trash
+.DS_Store
+Thumbs.db
+bin/
+*.iso
+
+# Temp
+ignore/
+rebuild/
+logs/
+.task/
+tmp/
+
+# Ansible
+ansible/roles/xanmanning.k3s*
+ansible/roles/andrewrothstein.calicoctl*
+/ansible/roles/mrlesmithjr.zfs
+node_modules
+mitogen*
+
+# Test python utils
+tests/__pycache__
+
+# Sops
+.decrypted~*.yaml
+
+# machineConfigs
+k8s/talos/**/machineConfigs
+
+# kubeconfig
+kubeconfig
+.kubeconfig.yaml
+
+# talosconfig
+talosconfig
+.talosconfig.yaml
+
+# talos init
+/controlplane.yaml
+worker.yaml

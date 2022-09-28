@@ -1,0 +1,101 @@
+{
+  // General RenovateBot configuration
+  "extends": [
+    ":enableRenovate",
+    "config:base",
+    ":disableRateLimiting",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":separatePatchReleases",
+    "docker:enableMajor",
+    ":enablePreCommit",
+    "github>CodeHoschi/k8s-clusters//.github/renovate/commitMessage",
+    "github>CodeHoschi/k8s-clusters//.github/renovate/labels",
+    "github>CodeHoschi/k8s-clusters//.github/renovate/semanticCommits"
+  ],
+  "platform": "github",
+  "username": "hoschi-bot[bot]",
+  "repositories": ["CodeHoschi/k8s-clusters"],
+  "onboarding": false,
+  "requireConfig": "optional",
+  "gitAuthor": "Hoschi-Bot <13208657+hoschi-bot[bot]@users.noreply.github.com>",
+  "commitBody": "Signed-off-by: CodeHoschi <13208657+Truxnell@users.noreply.github.com>",
+  "timezone": "Europe/Berlin",
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": ["prIgnoreNotification"],
+  "rebaseWhen": "conflicted",
+  // Set up Renovate Managers
+  "helm-values": {
+    "fileMatch": ["manifests/.+helm-release\\.yaml$"]
+  },
+  "kubernetes": {
+    "fileMatch": ["manifests/.+\\.ya?ml$"]
+  },
+  "flux": {
+    "fileMatch": ["manifests/.+\\.ya?ml$"]
+  },
+  "regexManagers": [
+    // regexManager to read and process GitHub release artifacts
+    {
+      "fileMatch": ["manifests/.+helm-release\\.yaml$"],
+      "matchStrings": [
+        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "helm"
+    },
+    {
+      "fileMatch": ["manifests/actions-runner-system/runners/.+\\.yaml$"],
+      "matchStrings": ["image: (?<depName>.*?):(?<currentValue>.*?)\n"],
+      "datasourceTemplate": "docker"
+    }
+  ],
+  "packageRules": [
+    // Setup datasources
+    {
+      "packagePatterns": ["rook-ceph-cluster", "rook-ceph"],
+      "enabled": true,
+      "groupName": "rook-ceph"
+    },
+    {
+      "matchDatasources": ["helm"],
+      "separateMinorPatch": true
+    },
+    {
+      "matchDatasources": ["docker"],
+      "enabled": true,
+      "commitMessageTopic": "container image {{depName}}",
+      "commitMessageExtra": "to {{#if isSingleVersion}}v{{{toVersion}}}{{else}}{{{newValue}}}{{/if}}",
+      "matchUpdateTypes": ["major", "minor", "patch"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
+      "labels": ["renovate/image-release", "dependency/major"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor"],
+      "labels": ["renovate/image-release", "dependency/minor"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["patch"],
+      "labels": ["renovate/image-release", "dependency/patch"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["major"],
+      "labels": ["renovate/helm-release", "dependency/major"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["minor"],
+      "labels": ["renovate/helm-release", "dependency/minor"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["patch"],
+      "labels": ["renovate/helm-release", "dependency/patch"]
+    }
+  ]
+}
