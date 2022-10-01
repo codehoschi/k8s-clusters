@@ -24,9 +24,9 @@ spec:
     #     name: custom
     #     urls:
     #       - https://raw.githubusercontent.com/CodeHoschi/k8s-clusters/main/integrations/sidero/custom/cni/cilium-deployment.yaml
-    - op: add
-      path: /cluster/network/cni/name
-      value: 'none'
+    # - op: add
+    #   path: /cluster/network/cni/name
+    #   value: 'none'
     - op: add
       path: /cluster/proxy/disabled
       value: true
