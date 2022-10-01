@@ -14,18 +14,19 @@ spec:
         interfaces:
           - interface: eth0
             dhcp: true
-            vip:
-              ip: 192.168.1.50
     - op: add
       path: /machine/kubelet/extraArgs
       value:
         rotate-server-certificates: true
+    # - op: add
+    #   path: /cluster/network/cni
+    #   value:
+    #     name: custom
+    #     urls:
+    #       - https://raw.githubusercontent.com/CodeHoschi/k8s-clusters/main/integrations/sidero/custom/cni/cilium-deployment.yaml
     - op: add
-      path: /cluster/network/cni
-      value:
-        name: custom
-        urls:
-          - https://raw.githubusercontent.com/charlie-haley/home-infra/main/integrations/sidero/custom/cni/cilium-deployment.yaml
+      path: /cluster/network/cni/name
+      value: 'none'
     - op: add
       path: /cluster/proxy/disabled
       value: true
