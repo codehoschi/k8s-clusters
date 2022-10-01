@@ -37,4 +37,4 @@ talosconfig
 
 # talos init
 /controlplane.yaml
-worker.yaml
+/worker.yaml
