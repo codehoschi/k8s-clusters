@@ -8,22 +8,22 @@ spec:
     - op: replace
       path: /machine/install/disk
       value: /dev/sda
-    # - op: add
-    #   path: /machine/network
-    #   value:
-    #     interfaces:
-    #       - interface: eth0
-    #         dhcp: true
+    - op: add
+      path: /machine/network
+      value:
+        interfaces:
+          - interface: eth0
+            dhcp: true
     - op: add
       path: /machine/kubelet/extraArgs
       value:
         rotate-server-certificates: true
-    # - op: add
-    #   path: /cluster/network/cni
-    #   value:
-    #     name: custom
-    #     urls:
-    #       - https://raw.githubusercontent.com/CodeHoschi/k8s-clusters/main/integrations/sidero/custom/cni/cilium-deployment.yaml
+    - op: add
+      path: /cluster/network/cni
+      value:
+        name: custom
+        urls:
+          - https://raw.githubusercontent.com/CodeHoschi/k8s-clusters/main/integrations/sidero/custom/cni/cilium-deployment.yaml
     # - op: add
     #   path: /cluster/network/cni/name
     #   value: 'none'
