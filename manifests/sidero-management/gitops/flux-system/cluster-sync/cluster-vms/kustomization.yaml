@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - sync
   - cluster-settings.yaml
-  - cluster-secrets.yaml
+  - cluster-secrets.sops.yaml
