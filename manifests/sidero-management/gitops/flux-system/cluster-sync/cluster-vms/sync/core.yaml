@@ -1,0 +1,31 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: cluster-vms-core
+  namespace: flux-system
+spec:
+  kubeConfig:
+    secretRef:
+      name: cluster-vms-kubeconfig
+  interval: 10m0s
+  dependsOn:
+    - name: metal-01-crds
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  path: ./manifests/cluster-vms/core
+  prune: true
+  validation: client
+  postBuild:
+    substitute: {}
+    substituteFrom:
+      - kind: Secret
+        name: cluster-secrets-cluster-vms
+      - kind: ConfigMap
+        name: cluster-settings-cluster-vms
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
