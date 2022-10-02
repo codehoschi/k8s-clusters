@@ -5,6 +5,8 @@ metadata:
   name: cluster-settings-cluster-vms
   namespace: flux-system
 data:
+  CLUSTER_NAME: cluster-vms
+  CLUSTER_ID: '1'
   GATEWAY_IP: 192.168.1.1
   SVC_BLOCKY_ADDRESS: 192.168.1.243
   SVC_HOME_ASSISTANT_ADDRESS: 192.168.1.246
