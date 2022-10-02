@@ -13,5 +13,6 @@ hubble:
       method: cert-mangaer
 ipam:
   mode: kubernetes
-k8sServiceHost: cp-vms.k8s.lmwpva.net
+# k8sServiceHost: cp-vms.k8s.lmwpva.net
+k8sServiceHost: 10.200.0.199
 k8sServicePort: 6443
