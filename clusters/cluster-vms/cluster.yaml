@@ -28,6 +28,5 @@ metadata:
   namespace: flux-system
 spec:
   controlPlaneEndpoint:
-    # host: cp-vms.k8s.lmwpva.net
-    host: 10.200.0.199
+    host: cp-vms.k8s.lmwpva.net
     port: 6443
