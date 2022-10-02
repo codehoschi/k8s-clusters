@@ -3,7 +3,7 @@ apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
 kind: TalosConfigTemplate
 metadata:
   name: cluster-vms-workers
-  namespace: default
+  namespace: flux-system
 spec:
   template:
     spec:
@@ -14,7 +14,7 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
 metadata:
   name: cluster-vms-workers
-  namespace: default
+  namespace: flux-system
 spec:
   clusterName: cluster-vms
   replicas: 1
@@ -38,7 +38,7 @@ apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
 kind: MetalMachineTemplate
 metadata:
   name: cluster-vms-workers
-  namespace: default
+  namespace: flux-system
 spec:
   template:
     spec:

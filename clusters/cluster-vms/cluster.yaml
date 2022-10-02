@@ -3,7 +3,7 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
   name: cluster-vms
-  namespace: default
+  namespace: flux-system
 spec:
   clusterNetwork:
     pods:
@@ -25,7 +25,7 @@ apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
 kind: MetalCluster
 metadata:
   name: cluster-vms
-  namespace: default
+  namespace: flux-system
 spec:
   controlPlaneEndpoint:
     host: cp-vms.k8s.lmwpva.net
