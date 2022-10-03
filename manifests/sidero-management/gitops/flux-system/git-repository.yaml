@@ -10,4 +10,5 @@ spec:
     branch: main
   secretRef:
     name: flux-system
-  url: ssh://git@github.com/codehoschi/k8s-clusters
+  # url: ssh://git@github.com/codehoschi/k8s-clusters
+  url: https://github.com/CodeHoschi/k8s-clusters.git
