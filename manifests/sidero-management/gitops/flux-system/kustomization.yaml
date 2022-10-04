@@ -9,7 +9,7 @@ patches:
   - patch: |
       - op: add
         path: /spec/template/spec/containers/0/args/-
-        value: --insecure-kubeconfig-tls
+        value: --insecure-kubeconfig-tls=true
     target:
       kind: Deployment
       name: '(kustomize-controller|helm-controller)'
