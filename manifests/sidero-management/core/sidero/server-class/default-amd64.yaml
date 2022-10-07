@@ -7,7 +7,7 @@ spec:
   qualifiers:
     cpu:
       - manufacturer: QEMU
-        version: ''
+        version: pc-i440fx-5.2
       - manufacturer: Intel(R) Corporation
         version: Intel(R) Core(TM) i5-9500T CPU @ 2.20GHz
       - manufacturer: Intel(R) Corporation
