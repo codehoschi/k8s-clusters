@@ -5,11 +5,11 @@ resources:
   - git-repository.yaml
   - gotk-components.yaml
 # - gotk-sync.yaml
-patches:
-  - patch: |
-      - op: add
-        path: /spec/template/spec/containers/0/args/-
-        value: --insecure-kubeconfig-tls
-    target:
-      kind: Deployment
-      name: '(kustomize-controller|helm-controller)'
+# patches:
+#   - patch: |
+#       - op: add
+#         path: /spec/template/spec/containers/0/args/-
+#         value: --insecure-kubeconfig-tls
+#     target:
+#       kind: Deployment
+#       name: '(kustomize-controller|helm-controller)'
