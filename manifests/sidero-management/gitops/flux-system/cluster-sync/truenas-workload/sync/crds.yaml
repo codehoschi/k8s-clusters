@@ -8,7 +8,6 @@ spec:
   kubeConfig:
     secretRef:
       name: truenas-workload-kubeconfig
-      namespace: default
   interval: 10m0s
   sourceRef:
     kind: GitRepository
