@@ -2,47 +2,57 @@
 apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
 kind: TalosConfigTemplate
 metadata:
-  name: cluster-vms-workers
-  namespace: flux-system
+  name: truenas-workload-workers
+  namespace: default
 spec:
   template:
     spec:
       generateType: join
       talosVersion: v1.2.3
+      configPatches:
+        - op: replace
+          path: /machine/install/disk
+          value: /dev/sda
+        - op: add
+          path: /machine/network
+          value:
+            interfaces:
+              - interface: eth0
+                dhcp: true
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
 metadata:
-  name: cluster-vms-workers
-  namespace: flux-system
+  name: truenas-workload-workers
+  namespace: default
 spec:
-  clusterName: cluster-vms
+  clusterName: truenas-workload
   replicas: 1
   selector:
-    matchLabels: {}
+    matchLabels: null
   template:
     spec:
       bootstrap:
         configRef:
           apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
           kind: TalosConfigTemplate
-          name: cluster-vms-workers
-      clusterName: cluster-vms
+          name: truenas-workload-workers
+      clusterName: truenas-workload
       infrastructureRef:
         apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
         kind: MetalMachineTemplate
-        name: cluster-vms-workers
-      version: v1.25.2
+        name: truenas-workload-workers
+      version: v1.25.1
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
 kind: MetalMachineTemplate
 metadata:
-  name: cluster-vms-workers
-  namespace: flux-system
+  name: truenas-workload-workers
+  namespace: default
 spec:
   template:
     spec:
       serverClassRef:
         apiVersion: metal.sidero.dev/v1alpha1
         kind: ServerClass
-        name: worker
+        name: any

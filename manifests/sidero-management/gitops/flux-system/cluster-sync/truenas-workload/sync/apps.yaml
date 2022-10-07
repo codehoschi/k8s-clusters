@@ -2,29 +2,29 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: cluster-vms-apps
+  name: truenas-workload-apps
   namespace: flux-system
 spec:
   kubeConfig:
     secretRef:
-      name: cluster-vms-kubeconfig
+      name: truenas-workload-kubeconfig
   interval: 10m0s
   dependsOn:
-    - name: cluster-vms-core
+    - name: truenas-workload-core
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./manifests/cluster-vms/apps
+  path: ./manifests/truenas-workload/apps
   prune: true
   validation: client
   postBuild:
     substitute: {}
     substituteFrom:
       - kind: Secret
-        name: cluster-secrets-cluster-vms
+        name: cluster-secrets-truenas-workload
       - kind: ConfigMap
-        name: cluster-settings-cluster-vms
+        name: cluster-settings-truenas-workload
   decryption:
     provider: sops
     secretRef:
