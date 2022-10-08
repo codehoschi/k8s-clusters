@@ -6,5 +6,5 @@ metadata:
   namespace: network-system
 spec:
   addresses:
-    - ${NET_LB_RANGE}
+    - ${METALLB_LB_RANGE}
   autoAssign: true
