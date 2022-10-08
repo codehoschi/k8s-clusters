@@ -1,0 +1,121 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: thanos
+  namespace: monitoring-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: thanos
+      version: 11.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation: # perform remediation when helm install fails
+      retries: 3
+  upgrade:
+    remediation: # perform remediation when helm upgrade fails
+      retries: 3
+      remediateLastFailure: true # remediate the last failure, when no retries remain
+    cleanupOnFail: true
+  dependsOn:
+    - name: kube-prometheus-stack
+      namespace: monitoring-system
+    - name: kube-prometheus-stacknfs-subdir-external-provisioner
+      namespace: kube-system
+    # - name: rook-ceph-cluster
+    #   namespace: rook-ceph
+  # valuesFrom:
+  #   - kind: Secret
+  #     name: 'thanos-objstore-secret'
+  #     optional: false
+
+  values:
+    image:
+      registry: quay.io
+      repository: thanos/thanos
+      tag: v0.28.0
+    existingObjstoreSecret: &secret thanos-objstore-secret
+
+    query:
+      enabled: true
+      replicaLabels:
+        - replica
+
+      dnsDiscovery:
+        sidecarsService: prometheus-thanos-discovery
+        sidecarsNamespace: monitoring-system
+
+      resources:
+        requests:
+          cpu: 15m
+          memory: 204M
+        limits:
+          memory: 247M
+
+      ingress:
+        main:
+          enabled: true
+          ingressClassName: 'traefik'
+          annotations:
+            hajimari.io/enable: 'true'
+            hajimari.io/icon: 'archive-clock'
+            traefik.ingress.kubernetes.io/router.entrypoints: 'web'
+          hosts:
+            - 'thanos-cluster.${SECRET_DOMAIN}'
+
+    queryFrontend:
+      enabled: false
+
+    bucketweb:
+      enabled: true
+      podAnnotations:
+        secret.reloader.stakater.com/reload: *secret
+      resources:
+        requests:
+          cpu: 15m
+          memory: 64M
+        limits:
+          memory: 83M
+
+    compactor:
+      enabled: true
+      persistence:
+        enabled: false
+      podAnnotations:
+        secret.reloader.stakater.com/reload: *secret
+      resources:
+        requests:
+          cpu: 15m
+          memory: 183M
+        limits:
+          memory: 11G
+
+    storegateway:
+      enabled: true
+      persistence:
+        enabled: true
+        storageClass: nfs-client
+        size: 5Gi
+      podAnnotations:
+        configmap.reloader.stakater.com/reload: *secret
+      resources:
+        requests:
+          cpu: 15m
+          memory: 183M
+        limits:
+          memory: 11G
+
+    ruler:
+      enabled: false
+
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
