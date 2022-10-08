@@ -5,6 +5,9 @@ metadata:
   name: traefik
   namespace: network-system
 spec:
+  dependsOn:
+    - name: metallb
+      namespace: network-system
   interval: 5m
   chart:
     spec:
