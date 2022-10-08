@@ -20,9 +20,14 @@ data:
             pods insecure
             fallthrough in-addr.arpa ip6.arpa
         }
-        forward . 10.200.0.1
+        forward . /etc/resolv.conf
         cache 30
         loop
         reload
         loadbalance
+    }
+    lmwpva.net:53 {
+        errors
+        cache 30
+        forward . 10.200.0.1
     }
