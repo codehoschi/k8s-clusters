@@ -27,7 +27,7 @@ spec:
     #   repository: gcr.io/k8s-staging-sig-storage/nfs-subdir-external-provisioner
     #   tag: v4.0.2
     nfs:
-      server: ${SECRET_NAS_IP}
+      server: ${NAS_IP}
       path: /volume1/kubedata
       mountOptions:
         - nfsvers=4
