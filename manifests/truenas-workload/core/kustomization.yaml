@@ -8,3 +8,4 @@ resources:
   - kube-system
   - network-system
   - system-monitoring
+  - nfs-subdir-external-provisioner
