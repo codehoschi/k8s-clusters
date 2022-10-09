@@ -4,7 +4,7 @@ kind: Kustomization
 bases:
   - ../../_base/core/
 resources:
-  # - namespaces
+  - namespaces
   - kube-system
   - network-system
   - system-monitoring
