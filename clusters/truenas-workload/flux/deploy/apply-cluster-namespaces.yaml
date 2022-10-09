@@ -8,6 +8,9 @@ spec:
   interval: 10m
   # dependsOn:
   #   - name: apply-manage-flux
+  kubeConfig:
+    secretRef:
+      name: truenas-workload-kubeconfig
   sourceRef:
     kind: GitRepository
     name: flux-system
