@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: './manifests/truenas-workload/core/network-system/metallb'
+  path: ./manifests/truenas-workload/core/network-system/metallb
   prune: true
   wait: true
   sourceRef:
@@ -22,7 +22,7 @@ spec:
   interval: 10m
   dependsOn:
     - name: truenas-workload-core-network-system-metallb
-  path: './manifests/truenas-workload/core/network-system/metallb/custom-resources/'
+  path: ./manifests/truenas-workload/core/network-system/metallb/custom-resources/
   prune: true
   wait: true
   sourceRef:
@@ -38,7 +38,7 @@ spec:
   interval: 10m
   dependsOn:
     - name: truenas-workload-core-network-system-metallb
-  path: './manifests/truenas-workload/core/network-system/traefik'
+  path: ./manifests/truenas-workload/core/network-system/traefik
   prune: true
   wait: true
   sourceRef:
