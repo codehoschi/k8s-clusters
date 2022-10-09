@@ -3,5 +3,7 @@ kind: Kustomization
 resources:
   - kube-prometheus-stack
   - thanos
+  - vpa
+  - goldilocks
   # - grafana
   # - botkube
