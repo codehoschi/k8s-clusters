@@ -9,7 +9,7 @@ spec:
   interval: 10m0s
   dependsOn:
     - name: truenas-workload-crds
-    - name: truenas-workload-namespaces
+    # - name: truenas-workload-namespaces
   kubeConfig:
     secretRef:
       name: truenas-workload-kubeconfig
