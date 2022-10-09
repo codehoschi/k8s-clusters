@@ -9,11 +9,12 @@ spec:
   interval: 10m0s
   dependsOn:
     - name: truenas-workload-crds
+    - name: truenas-workload-namespaces
   kubeConfig:
     secretRef:
       name: truenas-workload-kubeconfig
   # path: ./clusters/truenas-workload/flux/orchestration/core
-  path: ./manifests/truenas-workload/apps
+  path: ./manifests/truenas-workload/core
   prune: true
   # wait: true
   sourceRef:
