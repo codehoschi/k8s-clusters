@@ -37,7 +37,7 @@ metadata:
 spec:
   interval: 10m
   dependsOn:
-    - name: truenas-workload-core-network-system-metallb
+    - name: truenas-workload-core-network-system-metallb-custom-resources
   path: ./manifests/truenas-workload/core/network-system/traefik
   prune: true
   wait: true
