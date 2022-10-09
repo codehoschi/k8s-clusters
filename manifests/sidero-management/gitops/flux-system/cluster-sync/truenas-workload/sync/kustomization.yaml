@@ -7,3 +7,4 @@ resources:
   # - core
   - crds.yaml
   # - namespaces.yaml
+  - namespaces

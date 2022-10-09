@@ -39,6 +39,5 @@ spec:
       enabled: true
 
     tolerations:
-      - key: 'node-role.kubernetes.io/control-plane'
+      - effect: 'NoSchedule'
         operator: 'Exists'
-        effect: 'NoSchedule'

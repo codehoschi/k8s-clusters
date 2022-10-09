@@ -12,6 +12,6 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./clusters
+  path: ./clusters/truenas-workload/talos
   prune: true
   validation: client
