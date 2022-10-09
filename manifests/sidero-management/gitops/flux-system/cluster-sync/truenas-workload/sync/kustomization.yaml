@@ -8,3 +8,4 @@ resources:
   - crds.yaml
   # - namespaces.yaml
   # - namespaces
+  - deploy-cluster.yaml
