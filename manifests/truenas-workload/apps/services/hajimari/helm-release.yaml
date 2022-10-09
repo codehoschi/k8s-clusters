@@ -113,7 +113,7 @@ spec:
         annotations:
           # cert-manager.io/cluster-issuer: "letsencrypt-production"
           # cert-manager.io/cluster-issuer: 'selfsigned-cluster-issuer'
-          cert-manager.io/cluster-issuer: 'acme-cluster-issuer'
+          # cert-manager.io/cluster-issuer: 'acme-cluster-issuer'
           hajimari.io/enable: 'true'
           hajimari.io/icon: 'weather-sunset'
           traefik.ingress.kubernetes.io/router.entrypoints: 'websecure'
