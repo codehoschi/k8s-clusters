@@ -116,7 +116,8 @@ spec:
           # cert-manager.io/cluster-issuer: 'acme-cluster-issuer'
           hajimari.io/enable: 'true'
           hajimari.io/icon: 'weather-sunset'
-          traefik.ingress.kubernetes.io/router.entrypoints: 'websecure'
+          # traefik.ingress.kubernetes.io/router.entrypoints: 'websecure'
+          traefik.ingress.kubernetes.io/router.entrypoints: 'web'
         hosts:
           - host: 'hajimari.${SECRET_DOMAIN}'
             paths:
