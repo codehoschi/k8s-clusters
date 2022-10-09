@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: network-system
 resources:
   - helmrelease.yaml
-  - custom-resources
+  # - custom-resources
 generatorOptions:
   disableNameSuffixHash: true
 configMapGenerator:
