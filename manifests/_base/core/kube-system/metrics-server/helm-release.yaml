@@ -16,5 +16,12 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    args:
-      - --kubelet-insecure-tls
+    image:
+      repository: k8s.gcr.io/metrics-server/metrics-server
+      tag: v0.6.1
+    resources:
+      requests:
+        cpu: 15m
+        memory: 64M
+      limits:
+        memory: 64M
