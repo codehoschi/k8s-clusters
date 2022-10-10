@@ -19,6 +19,8 @@ spec:
     image:
       repository: k8s.gcr.io/metrics-server/metrics-server
       tag: v0.6.1
+    args:
+      - --kubelet-insecure-tls
     resources:
       requests:
         cpu: 15m
