@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   - cert-manager.yaml
   - kube-system.yaml
-  - monitoring.yaml
+  # - monitoring.yaml
   # - rook-ceph.yaml
