@@ -5,3 +5,4 @@ resources:
   - namespaces
   - sidero
   - kube-system
+  - kubelet-serving-cert-approver
