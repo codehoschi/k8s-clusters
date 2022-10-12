@@ -1,20 +1,23 @@
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: sidero-management-core
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 10m
   dependsOn:
     - name: sidero-management-crds
   sourceRef:
     kind: GitRepository
-    name: flux-system
-    namespace: flux-system
+    name: k8s-clusters
   path: ./manifests/sidero-management/core
   prune: true
-  validation: client
+  wait: true
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   postBuild:
     substitute: {}
     substituteFrom:
@@ -22,7 +25,3 @@ spec:
         name: cluster-secrets-sidero-management
       - kind: ConfigMap
         name: cluster-settings-sidero-management
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age

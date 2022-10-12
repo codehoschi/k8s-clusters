@@ -10,8 +10,7 @@ spec:
     - name: sidero-management-apps
   sourceRef:
     kind: GitRepository
-    name: flux-system
-    namespace: flux-system
+    name: k8s-clusters
   path: ./clusters/truenas-workload/talos
   prune: true
   validation: client

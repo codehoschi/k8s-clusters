@@ -29,5 +29,5 @@ data:
     lmwpva.net:53 {
         errors
         cache 30
-        forward . 10.200.0.1
+        forward . 10.0.0.1
     }

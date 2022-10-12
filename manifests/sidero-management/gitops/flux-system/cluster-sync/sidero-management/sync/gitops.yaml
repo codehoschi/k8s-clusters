@@ -2,16 +2,16 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: flux-system
+  name: sidero-management-gitops
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 10m
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: k8s-clusters
   path: ./manifests/sidero-management/gitops
   prune: true
-  validation: client
+  wait: true
   decryption:
     provider: sops
     secretRef:
