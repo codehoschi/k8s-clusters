@@ -13,4 +13,4 @@ spec:
     name: k8s-clusters
   path: ./clusters/truenas-workload/talos
   prune: true
-  wait: true
+  # wait: true

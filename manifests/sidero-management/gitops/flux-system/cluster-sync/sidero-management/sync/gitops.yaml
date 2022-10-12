@@ -11,7 +11,7 @@ spec:
     name: k8s-clusters
   path: ./manifests/sidero-management/gitops
   prune: true
-  wait: true
+  # wait: true
   decryption:
     provider: sops
     secretRef:
