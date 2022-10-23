@@ -200,7 +200,7 @@ metadata:
   namespace: kube-system
 data:
   config.yaml: |
-    cluster-name: cluster-vms
+    cluster-name: truenas-workload
     peer-service: "hubble-peer.kube-system.svc.cluster.local:443"
     listen-address: :4245
     dial-timeout: 

@@ -21,16 +21,16 @@ spec:
     # - op: add
     #   path: /cluster/network/cni
     #   value:
-    #     name: custom
-    #     urls:
-    #       - https://raw.githubusercontent.com/CodeHoschi/k8s-clusters/main/integrations/sidero/custom/cni/cilium-deployment.yaml
-    # # - op: add
-    # #   path: /cluster/network/cni
-    # #   value:
-    # #     name: 'none'
-    # - op: add
-    #   path: /cluster/proxy/disabled
-    #   value: true
+    #     name: 'none'
+    - op: add
+      path: /cluster/network/cni
+      value:
+        name: custom
+        urls:
+          - https://raw.githubusercontent.com/CodeHoschi/k8s-clusters/main/integrations/sidero/custom/cni/cilium-deployment.yaml
+    - op: add
+      path: /cluster/proxy/disabled
+      value: true
   selector:
     matchLabels:
       master-node: 'true'
