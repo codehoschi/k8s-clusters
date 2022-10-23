@@ -19,7 +19,7 @@ spec:
   # wait: true
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: k8s-clusters
     namespace: flux-system
   decryption:
     provider: sops

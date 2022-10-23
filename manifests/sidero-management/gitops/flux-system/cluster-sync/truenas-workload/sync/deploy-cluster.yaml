@@ -8,7 +8,7 @@ spec:
   interval: 10m0s
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: k8s-clusters
   path: ./clusters/truenas-workload/flux/deploy
   prune: true
   wait: true
