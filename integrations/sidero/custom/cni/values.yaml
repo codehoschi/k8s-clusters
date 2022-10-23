@@ -10,7 +10,7 @@ hubble:
     enabled: true
   tls:
     auto:
-      method: cert-mangaer
+      method: cert-manager
 ipam:
   mode: kubernetes
 k8sServiceHost: cp-vms.k8s.lmwpva.net
