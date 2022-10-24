@@ -24,47 +24,22 @@
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
 
+  "kubernetes": {
+    "fileMatch": ["manifests/.+\\.ya?ml$"]
+  },
+
   "helm-values": {
     "fileMatch": [
       "manifests/.+helm-release\\.yaml$",
       "manifests/.+helmrelease\\.yaml$"
     ]
   },
-  "kubernetes": {
-    "fileMatch": ["manifests/.+\\.ya?ml$"]
-  },
+
   "flux": {
     "fileMatch": ["manifests/.+\\.ya?ml$"]
   },
-  "regexManagers": [
-    {
-      "fileMatch": ["manifests/.+\\.ya?ml$"],
-      "matchStrings": [
-        "datasource=(?<datasource>.*?)\n *url: https://github\\.com/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n",
-        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)\n.*?_version: \"(?<currentValue>.*)\"\n",
-        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)\n.*?_VERSION=\"(?<currentValue>.*)\"\n"
-      ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "{{org}}/{{repo}}"
-    },
-    {
-      "fileMatch": ["manifests/.+\\.ya?ml$"],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( registryUrl=(?<registryUrl>.*?))?( versioning=(?<versioning>.*=?))?\n .*: (?<currentValue>.*=?)"
-      ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
-      "registryUrlTemplate": "{{#if registryUrl}}{{{registryUrl}}}{{else}}{{/if}}"
-    },
-    {
-      "fileMatch": ["manifests/.+\\.ya?ml$"],
-      "matchStrings": [
-        "# renovate: docker-image( registryUrl=(?<registryUrl>.*?))?( versioning=(?<versioning>.*=?))?\n .*: (?<depName>.*?):(?<currentValue>.*=?)"
-      ],
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}docker{{/if}}",
-      "registryUrlTemplate": "{{#if registryUrl}}{{{registryUrl}}}{{else}}{{/if}}"
-    },
 
+  "regexManagers": [
     {
       "fileMatch": [
         "manifests/.+helm-release\\.yaml$",
@@ -76,6 +51,7 @@
       "datasourceTemplate": "helm"
     }
   ],
+
   "packageRules": [
     {
       "packagePatterns": ["rook-ceph-cluster", "rook-ceph"],
