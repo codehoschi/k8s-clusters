@@ -38,7 +38,6 @@ spec:
   interval: 10m
   dependsOn:
     - name: hekate-core-network-system-metallb
-    - name: hekate-core-network-system-metallb-custom-resources
   path: ./manifests/hekate/core/network-system/traefik
   prune: true
   wait: true

@@ -20,4 +20,4 @@ spec:
         rotate-server-certificates: true
   selector:
     matchLabels:
-      pi-worker: "true"
+      hekate-worker: "true"

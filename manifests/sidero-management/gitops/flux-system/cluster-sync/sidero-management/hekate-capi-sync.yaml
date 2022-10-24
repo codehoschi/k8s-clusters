@@ -2,13 +2,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: apply-hekate-cluster-deployment
+  name: hekate-cluster
   namespace: flux-system
 spec:
   interval: 10m0s
+  dependsOn:
+    - name: sidero-management-apps
   sourceRef:
     kind: GitRepository
     name: k8s-clusters
-  path: ./clusters/hekate/flux/deploy
+  path: ./clusters/hekate/talos
   prune: true
-  wait: true
+  # wait: true

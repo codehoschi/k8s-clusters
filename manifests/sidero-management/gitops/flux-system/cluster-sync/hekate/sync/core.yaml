@@ -3,18 +3,18 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   # name: apply-truenas-workload-orchestration-core
-  name: hekate-core
+  name: truenas-workload-core
   namespace: flux-system
 spec:
   interval: 10m0s
   dependsOn:
-    - name: hekate-crds
+    - name: truenas-workload-crds
     # - name: truenas-workload-namespaces
   kubeConfig:
     secretRef:
-      name: hekate-kubeconfig
+      name: truenas-workload-kubeconfig
   # path: ./clusters/truenas-workload/flux/orchestration/core
-  path: ./manifests/hekate/core
+  path: ./manifests/truenas-workload/core
   prune: true
   # wait: true
   sourceRef:
@@ -29,6 +29,6 @@ spec:
     substitute: {}
     substituteFrom:
       - kind: ConfigMap
-        name: cluster-settings-hekate
+        name: cluster-settings-truenas-workload
       - kind: Secret
-        name: cluster-secrets-hekate
+        name: cluster-secrets-truenas-workload

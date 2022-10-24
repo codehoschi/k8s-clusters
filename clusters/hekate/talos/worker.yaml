@@ -1,0 +1,58 @@
+---
+apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
+kind: TalosConfigTemplate
+metadata:
+  name: hekate-workers
+  namespace: flux-system
+spec:
+  template:
+    spec:
+      generateType: join
+      talosVersion: v1.2.0
+      configPatches:
+        - op: replace
+          path: /machine/install/disk
+          value: /dev/sda
+        - op: add
+          path: /machine/network
+          value:
+            interfaces:
+              - interface: eth0
+                dhcp: true
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachineDeployment
+metadata:
+  name: hekate-workers
+  namespace: flux-system
+spec:
+  clusterName: hekate
+  replicas: 1
+  selector:
+    matchLabels: null
+  template:
+    spec:
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
+          kind: TalosConfigTemplate
+          name: hekate-workers
+      clusterName: truenas-workload
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+        kind: MetalMachineTemplate
+        name: hekate-workers
+      version: v1.25.1
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+kind: MetalMachineTemplate
+metadata:
+  name: hekate-workers
+  namespace: flux-system
+spec:
+  template:
+    spec:
+      serverClassRef:
+        apiVersion: metal.sidero.dev/v1alpha1
+        kind: ServerClass
+        name: hekate-worker

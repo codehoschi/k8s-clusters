@@ -6,5 +6,5 @@ resources:
   - default-arm64.yaml
   - master.yaml
   - worker.yaml
-  - master-pi.yaml
-  - worker-pi.yaml
+  - hekate-master.yaml
+  - hekate-worker.yaml
