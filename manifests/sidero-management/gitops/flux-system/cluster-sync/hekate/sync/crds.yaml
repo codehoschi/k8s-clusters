@@ -2,27 +2,27 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: truenas-workload-crds
+  name: hekate-crds
   namespace: flux-system
 spec:
   kubeConfig:
     secretRef:
-      name: truenas-workload-kubeconfig
+      name: hekate-kubeconfig
   interval: 10m0s
   sourceRef:
     kind: GitRepository
     name: k8s-clusters
     namespace: flux-system
-  path: ./manifests/truenas-workload/crds
+  path: ./manifests/hekate/crds
   prune: false
   validation: client
   postBuild:
     substitute: {}
     substituteFrom:
       - kind: Secret
-        name: cluster-secrets-truenas-workload
+        name: cluster-secrets-hekate
       - kind: ConfigMap
-        name: cluster-settings-truenas-workload
+        name: cluster-settings-hekate
   decryption:
     provider: sops
     secretRef:
