@@ -4,7 +4,7 @@ kind: Kustomization
 bases:
   - ../../_base.reworkme/core/
 resources:
-  - namespaces
+  # - namespaces
   - kubelet-serving-cert-approver
   - kube-system
   - network-system
