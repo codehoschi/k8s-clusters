@@ -22,17 +22,6 @@ spec:
     controlplane:
       generateType: controlplane
       talosVersion: v1.2.0
-      configPatches:
-        - op: replace
-          path: /machine/install/disk
-          # value: /dev/mmcblk1
-          value: /dev/sda
-        - op: add
-          path: /machine/network
-          value:
-            interfaces:
-              - interface: eth0
-                dhcp: true
   infrastructureTemplate:
     apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
     kind: MetalMachineTemplate
