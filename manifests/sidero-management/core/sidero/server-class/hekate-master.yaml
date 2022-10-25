@@ -4,6 +4,7 @@ kind: ServerClass
 metadata:
   name: hekate-master
 spec:
+  bootFromDiskMethod: ipxe-sanboot
   configPatches:
     - op: replace
       path: /machine/install/disk
