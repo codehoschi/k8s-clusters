@@ -8,7 +8,7 @@ spec:
   configPatches:
     - op: replace
       path: /machine/install/disk
-      value: /dev/mmcblk0
+      value: /dev/mmcblk1
     - op: add
       path: /machine/network
       value:
