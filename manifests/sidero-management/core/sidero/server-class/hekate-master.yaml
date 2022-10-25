@@ -4,6 +4,9 @@ kind: ServerClass
 metadata:
   name: hekate-master
 spec:
+  # environmentRef:
+  #   namespace: sidero
+  #   name: pi-arm64
   bootFromDiskMethod: ipxe-sanboot
   configPatches:
     - op: replace

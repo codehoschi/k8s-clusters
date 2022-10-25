@@ -2,7 +2,7 @@
 apiVersion: metal.sidero.dev/v1alpha1
 kind: Environment
 metadata:
-  name: default-arm64
+  name: pi-arm64
   namespace: sidero
 spec:
   kernel:
@@ -24,6 +24,7 @@ spec:
       - random.trust_cpu=on
       - slab_nomerge=
       - talos.platform=metal
+      - talos.board=rpi_4
   initrd:
     url: https://github.com/siderolabs/talos/releases/download/v1.2.3/initramfs-arm64.xz
     sha512: ""
