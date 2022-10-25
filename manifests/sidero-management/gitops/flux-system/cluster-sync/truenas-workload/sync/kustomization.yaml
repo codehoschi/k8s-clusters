@@ -2,10 +2,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - apps.yaml
-  - core.yaml
+  # - apps.yaml
+  # - core.yaml
   # - core
-  - crds.yaml
+  # - crds.yaml
   # - namespaces.yaml
   # - namespaces
   - deploy-cluster.yaml
