@@ -21,10 +21,10 @@ spec:
   controlPlaneConfig:
     controlplane:
       generateType: controlplane
-      talosVersion: v1.2.0
+      talosVersion: v1.2.5
   infrastructureTemplate:
     apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
     kind: MetalMachineTemplate
     name: hekate-cp
   replicas: 3
-  version: v1.25.1
+  version: v1.25.3
