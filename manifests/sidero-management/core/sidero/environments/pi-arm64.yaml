@@ -2,17 +2,16 @@
 apiVersion: metal.sidero.dev/v1alpha1
 kind: Environment
 metadata:
-  name: pi-arm64
-  namespace: sidero
+  name: rpi4
 spec:
+  initrd:
+    url: https://github.com/siderolabs/talos/releases/download/v1.2.3/initramfs-arm64.xz
   kernel:
     url: https://github.com/siderolabs/talos/releases/download/v1.2.3/vmlinuz-arm64
-    sha512: ""
     args:
-      - console=tty0
-      - console=ttyS1,115200n8
+      - console=ttyAMA0,115200
       - consoleblank=0
-      - earlyprintk=ttyS1,115200n8
+      - earlyprintk=ttyAMA0,115200
       - ima_appraise=fix
       - ima_hash=sha512
       - ima_template=ima-ng
@@ -25,6 +24,3 @@ spec:
       - slab_nomerge=
       - talos.platform=metal
       - talos.board=rpi_4
-  initrd:
-    url: https://github.com/siderolabs/talos/releases/download/v1.2.3/initramfs-arm64.xz
-    sha512: ""
