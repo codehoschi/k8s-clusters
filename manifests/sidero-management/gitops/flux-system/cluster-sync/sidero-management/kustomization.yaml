@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
   - sync
   - truenas-workload-capi-sync.yaml
-  # - hekate-capi-sync.yaml
+  - hekate-capi-sync.yaml
   - cluster-settings.yaml
   - cluster-secrets.sops.yaml
