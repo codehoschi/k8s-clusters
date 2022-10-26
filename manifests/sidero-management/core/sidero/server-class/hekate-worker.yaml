@@ -4,7 +4,7 @@ kind: ServerClass
 metadata:
   name: heakte-worker
 spec:
-  bootFromDiskMethod: ipxe-sanboot
+  # bootFromDiskMethod: ipxe-sanboot
   configPatches:
     - op: replace
       path: /machine/install/disk
