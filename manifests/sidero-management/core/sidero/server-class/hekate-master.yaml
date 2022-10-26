@@ -6,7 +6,7 @@ metadata:
 spec:
   environmentRef:
     name: rpi4
-  bootFromDiskMethod: ipxe-sanboot
+  # bootFromDiskMethod: ipxe-sanboot
   configPatches:
     - op: replace
       path: /machine/install/disk
