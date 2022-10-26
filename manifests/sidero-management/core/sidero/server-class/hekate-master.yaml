@@ -4,9 +4,9 @@ kind: ServerClass
 metadata:
   name: hekate-master
 spec:
-  # environmentRef:
-  #   name: rpi4
-  # bootFromDiskMethod: ipxe-sanboot
+  environmentRef:
+    name: rpi4
+  bootFromDiskMethod: ipxe-sanboot
   configPatches:
     - op: replace
       path: /machine/install/disk
