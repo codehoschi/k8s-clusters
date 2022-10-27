@@ -16,7 +16,7 @@ spec:
       path: /machine/install
       value:
         diskSelector:
-          busPath: /system/container/ACPI0004:01/BRCME88C:00/mmc_host/*
+          busPath: /platform/emmc2bus/fe340000.mmc/mmc_host/*
     - op: add
       path: /machine/network
       value:
