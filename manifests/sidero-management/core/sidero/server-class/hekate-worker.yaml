@@ -4,6 +4,8 @@ kind: ServerClass
 metadata:
   name: heakte-worker
 spec:
+  environmentRef:
+    name: rpi4
   # bootFromDiskMethod: ipxe-sanboot
   configPatches:
     # - op: replace
