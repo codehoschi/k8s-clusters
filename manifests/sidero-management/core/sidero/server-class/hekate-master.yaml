@@ -16,7 +16,9 @@ spec:
       path: /machine/install
       value:
         diskSelector:
-          busPath: /platform/emmc2bus/fe340000.mmc/mmc_host/*
+          type: SD
+          # size: 32GB
+          # busPath: /platform/emmc2bus/fe340000.mmc/mmc_host/*
     - op: add
       path: /machine/network
       value:
