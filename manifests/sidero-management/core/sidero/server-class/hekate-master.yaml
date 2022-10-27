@@ -4,8 +4,8 @@ kind: ServerClass
 metadata:
   name: hekate-master
 spec:
-  environmentRef:
-    name: rpi4
+  # environmentRef:
+  #   name: rpi4
   # bootFromDiskMethod: ipxe-sanboot
   configPatches:
     # - op: replace
