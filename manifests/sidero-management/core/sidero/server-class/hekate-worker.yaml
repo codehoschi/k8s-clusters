@@ -6,9 +6,14 @@ metadata:
 spec:
   # bootFromDiskMethod: ipxe-sanboot
   configPatches:
+    # - op: replace
+    #   path: /machine/install/disk
+    #   value: /dev/mmcblk1
     - op: replace
-      path: /machine/install/disk
-      value: /dev/mmcblk1
+      path: /machine/install
+      value:
+        diskSelector:
+          type: SD
     - op: add
       path: /machine/network
       value:
