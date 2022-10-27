@@ -8,11 +8,13 @@ spec:
     name: rpi4
   # bootFromDiskMethod: ipxe-sanboot
   configPatches:
+    # - op: replace
+    #   path: /machine/install/disk
+    #   value: /dev/mmcblk1
+    #   # value: /dev/sda
     - op: replace
-      path: /machine/install/disk
-      # value: /dev/mmcblk1
-      value: /dev/mmcblk0
-      # value: /dev/sda
+      path: /machine/install/diskSelector/busPath
+      value: /platform/fe330000.mmc/mmc_host/*
     - op: add
       path: /machine/network
       value:
