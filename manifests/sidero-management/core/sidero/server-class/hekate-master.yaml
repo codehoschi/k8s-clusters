@@ -8,15 +8,15 @@ spec:
     name: rpi4
   # bootFromDiskMethod: ipxe-sanboot
   configPatches:
-    - op: replace
-      path: /machine/install/disk
-      value: /dev/mmcblk1
-    #   # value: /dev/sda
     # - op: replace
-    #   path: /machine/install
-    #   value:
-    #     diskSelector:
-    #       busPath: /system/container/ACPI0004:01/BRCME88C:00/mmc_host/*
+    #   path: /machine/install/disk
+    #   value: /dev/mmcblk1
+    # #   # value: /dev/sda
+    - op: replace
+      path: /machine/install
+      value:
+        diskSelector:
+          busPath: /system/container/ACPI0004:01/BRCME88C:00/mmc_host/*
     - op: add
       path: /machine/network
       value:
