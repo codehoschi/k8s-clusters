@@ -5,7 +5,7 @@ resources:
   # - apps.yaml
   - core.yaml
   # - core
-  # - crds.yaml
+  - crds.yaml
   # - namespaces.yaml
   # - namespaces
   - deploy-cluster.yaml
