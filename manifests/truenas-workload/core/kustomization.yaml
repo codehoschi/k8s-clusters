@@ -5,7 +5,7 @@ bases:
   - ../../_base.reworkme/core/
 resources:
   # - namespaces
-  - kubelet-serving-cert-approver
+  # - kubelet-serving-cert-approver
   - kube-system
   - network-system
   - system-monitoring
