@@ -19,25 +19,25 @@ spec:
     timeout: 10m
     recreate: true
     cleanupOnFail: true
-  dependsOn:
-    - name: kube-prometheus-stack
-      namespace: system-monitoring
+  # dependsOn:
+  #   - name: kube-prometheus-stack
+  #     namespace: system-monitoring
   values:
-    prometheus:
-      namespace: system-monitoring
-      serviceAccount: prometheus-prometheus
-      podMonitor:
-        enabled: true
-      prometheusRule:
-        enabled: true
+    # prometheus:
+    #   namespace: system-monitoring
+    #   serviceAccount: prometheus-prometheus
+    #   podMonitor:
+    #     enabled: true
+    #   prometheusRule:
+    #     enabled: true
 
     speaker:
       tolerateMaster: true
 
-    existingConfigMap: 'metallb-config'
+    existingConfigMap: "metallb-config"
     crds:
       enabled: true
 
     tolerations:
-      - effect: 'NoSchedule'
-        operator: 'Exists'
+      - effect: "NoSchedule"
+        operator: "Exists"
