@@ -4,8 +4,8 @@ kind: Kustomization
 namespace: network-system
 resources:
   - ./helmrelease.yaml
-  # - ./custom-resources/ip-address-pool.yaml
-  # - ./custom-resources/l2-advertisement.yaml
+  - ./custom-resources/ip-address-pool.yaml
+  - ./custom-resources/l2-advertisement.yaml
 generatorOptions:
   disableNameSuffixHash: true
 configMapGenerator:
