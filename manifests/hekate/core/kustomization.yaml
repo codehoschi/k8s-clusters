@@ -3,6 +3,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
   - ../../_base.reworkme/core/
-# resources:
+resources:
+  - network-system
+  - nfs-subdir-external-provisioner
 # - namespaces
 # - kubelet-serving-cert-approver
