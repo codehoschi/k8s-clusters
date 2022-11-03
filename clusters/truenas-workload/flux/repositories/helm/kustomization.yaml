@@ -2,18 +2,18 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - bitnami-charts.yaml
-  - cilium-charts.yaml
-  - fairwinds-charts.yaml
-  - grafana-charts.yaml
-  - hajimari-charts.yaml
-  - jetstack-charts.yaml
-  - k8s-at-home-charts.yaml
-  - kubernetes-sigs-descheduler-charts.yaml
+  # - bitnami-charts.yaml
+  # - cilium-charts.yaml
+  # - fairwinds-charts.yaml
+  # - grafana-charts.yaml
+  # - hajimari-charts.yaml
+  # - jetstack-charts.yaml
+  # - k8s-at-home-charts.yaml
+  # - kubernetes-sigs-descheduler-charts.yaml
   - metallb-charts.yaml
-  - metrics-server-charts.yaml
-  - nfs-subdir-external-provisioner-charts.yaml
-  - prometheus-community-charts.yaml
-  - rook-ceph-charts.yaml
-  - stakater-charts.yaml
-  - traefik-charts.yaml
+  # - metrics-server-charts.yaml
+  # - nfs-subdir-external-provisioner-charts.yaml
+  # - prometheus-community-charts.yaml
+  # - rook-ceph-charts.yaml
+  # - stakater-charts.yaml
+  # - traefik-charts.yaml
