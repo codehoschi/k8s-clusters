@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    # - name: apply-truenas-workload-cluster-crds
+    - name: apply-truenas-workload-cluster-crds
     - name: apply-truenas-workload-cluster-namespaces
     - name: apply-truenas-workload-cluster-repositories
   decryption:
