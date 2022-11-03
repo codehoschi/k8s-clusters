@@ -16,7 +16,7 @@ spec:
   interval: 10m0s
   sourceRef:
     kind: GitRepository
-    name: home-cluster
+    name: k8s-clusters
   path: ./clusters/truenas-workload/crds/
   prune: true
   wait: true
