@@ -5,6 +5,10 @@ metadata:
   name: apply-hekate-cluster-repositories
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   interval: 10m0s
   kubeConfig:
     secretRef:
@@ -15,7 +19,3 @@ spec:
   path: ./clusters/hekate/flux/repositories
   prune: true
   wait: true
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
