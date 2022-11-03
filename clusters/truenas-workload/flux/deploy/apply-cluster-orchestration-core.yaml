@@ -1,0 +1,33 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: apply-truenas-workload-orchestration-core
+  namespace: flux-system
+spec:
+  dependsOn:
+    # - name: truenas-workload-crds
+    - name: truenas-workload-namespaces
+    - name: truenas-workload-repositories
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  interval: 10m0s
+  kubeConfig:
+    secretRef:
+      name: truenas-workload-kubeconfig
+  path: ./clusters/truenas-workload/flux/orchestration/core
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-clusters
+    namespace: flux-system
+  postBuild:
+    substitute: {}
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings-truenas-workload
+      - kind: Secret
+        name: cluster-secrets-truenas-workload
+  wait: true
