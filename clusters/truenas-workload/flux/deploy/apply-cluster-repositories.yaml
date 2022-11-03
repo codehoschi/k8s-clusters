@@ -2,17 +2,17 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: apply-hekate-cluster-repositories
+  name: apply-truenas-workload-cluster-repositories
   namespace: flux-system
 spec:
   interval: 10m0s
   kubeConfig:
     secretRef:
-      name: hekate-kubeconfig
+      name: truenas-workload-kubeconfig
   sourceRef:
     kind: GitRepository
     name: k8s-clusters
-  path: ./clusters/hekate/flux/repositories
+  path: ./clusters/truenas-worklaod/flux/repositories
   prune: true
   wait: true
   decryption:

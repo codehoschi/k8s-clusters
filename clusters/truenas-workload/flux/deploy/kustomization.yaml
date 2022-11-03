@@ -7,5 +7,5 @@ resources:
   - ./apply-cluster-namespaces.yaml
   # - ./apply-cluster-orchestration-core.yaml
   # - ./apply-cluster-orchestration-user.yaml
-  # - ./apply-cluster-repositories.yaml
+  - ./apply-cluster-repositories.yaml
   # - ./apply-manage-flux.yaml
