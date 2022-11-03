@@ -5,6 +5,9 @@ metadata:
   name: truenas-workload-core-network-system-metallb
   namespace: flux-system
 spec:
+  kubeConfig:
+    secretRef:
+      name: truenas-workload-kubeconfig
   interval: 10m
   path: ./manifests/truenas-workload/core/network-system/metallb
   prune: true
