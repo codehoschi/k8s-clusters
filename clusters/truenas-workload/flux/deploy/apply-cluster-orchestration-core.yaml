@@ -7,13 +7,13 @@ metadata:
 spec:
   dependsOn:
     # - name: truenas-workload-crds
-    - name: truenas-workload-namespaces
-    - name: truenas-workload-repositories
+    - name: apply-truenas-workload-namespaces
+    - name: apply-truenas-workload-repositories
   decryption:
     provider: sops
     secretRef:
       name: sops-age
-  interval: 10m0s
+  interval: 10m
   kubeConfig:
     secretRef:
       name: truenas-workload-kubeconfig
