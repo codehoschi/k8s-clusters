@@ -5,6 +5,8 @@ metadata:
   name: apply-truenas-workload-cluster-repositories
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: apply-truenas-workload-cluster-manage-flux
   decryption:
     provider: sops
     secretRef:
