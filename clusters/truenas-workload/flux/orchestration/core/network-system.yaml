@@ -5,6 +5,8 @@ metadata:
   name: truenas-workload-core-network-system-metallb
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: truenas-workload-core-system-monitoring-kube-prometheus-stack
   interval: 10m
   path: ./manifests/truenas-workload/core/network-system/metallb
   prune: true
