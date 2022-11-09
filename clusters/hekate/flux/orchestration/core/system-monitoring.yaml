@@ -2,13 +2,62 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: hekate-core-system-monitoring-thanos
+  name: core-system-monitoring-kube-prometheus-stack
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./manifests/hekate/core/system-monitoring/thanos
+  path: ./manifests/hekate/core/system-monitoring/kube-prometheus-stack
   prune: true
-  wait: true
   sourceRef:
     kind: GitRepository
     name: k8s-clusters
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: core-system-monitoring-thanos
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: core-system-monitoring-kube-prometheus-stack
+    - name: core-kube-system-nfs-subdir-external-provisioner
+  interval: 10m
+  path: ./manifests/hekate/core/system-monitoring/thanos
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-clusters
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: core-system-monitoring-vpa
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: core-system-monitoring-thanos
+  interval: 10m
+  path: ./manifests/hekate/core/system-monitoring/vpa
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-clusters
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: core-system-monitoring-goldilocks
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: core-system-monitoring-vpa
+  interval: 10m
+  path: ./manifests/hekate/core/system-monitoring/goldilocks
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-clusters
+  wait: true

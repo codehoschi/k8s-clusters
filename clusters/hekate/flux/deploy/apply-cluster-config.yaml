@@ -1,0 +1,23 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: apply-hekate-cluster-config
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: apply-hekate-cluster-manage-flux
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  interval: 10m0s
+  kubeConfig:
+    secretRef:
+      name: hekate-kubeconfig
+  sourceRef:
+    kind: GitRepository
+    name: k8s-clusters
+  path: ./clusters/hekate/flux/vars/
+  prune: true
+  wait: true

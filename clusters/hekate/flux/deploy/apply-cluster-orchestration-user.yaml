@@ -1,0 +1,56 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: apply-hekate-cluster-orchestration-user
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: apply-hekate-cluster-crds
+    - name: apply-hekate-cluster-namespaces
+    - name: apply-hekate-cluster-repositories
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  interval: 10m
+  kubeConfig:
+    secretRef:
+      name: hekate-kubeconfig
+  path: ./clusters/hekate/flux/orchestration/user
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-clusters
+    namespace: flux-system
+  postBuild:
+    substitute: {}
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings-hekate
+      - kind: Secret
+        name: cluster-secrets-hekate
+  wait: true
+  patches:
+    - patch: |-
+        apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+        kind: Kustomization
+        metadata:
+          name: not-used
+          namespace: not-used
+        spec:
+          decryption:
+            provider: sops
+            secretRef:
+              name: sops-age
+          postBuild:
+            substitute: {}
+            substituteFrom:
+              - kind: ConfigMap
+                name: cluster-settings-hekate
+              - kind: Secret
+                name: cluster-secrets-hekate
+      target:
+        kind: Kustomization
+        group: kustomize.toolkit.fluxcd.io
+        version: v1beta2
