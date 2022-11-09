@@ -5,6 +5,8 @@ metadata:
   name: apply-hekate-cluster-repositories
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: apply-hekate-cluster-manage-flux
   decryption:
     provider: sops
     secretRef:
