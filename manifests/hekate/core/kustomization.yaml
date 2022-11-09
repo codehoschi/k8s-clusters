@@ -6,5 +6,6 @@ bases:
 resources:
   - network-system
   - nfs-subdir-external-provisioner
+  - system-monitoring
 # - namespaces
 # - kubelet-serving-cert-approver
