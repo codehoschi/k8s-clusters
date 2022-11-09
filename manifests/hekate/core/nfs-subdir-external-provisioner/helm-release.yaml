@@ -28,7 +28,7 @@ spec:
     #   tag: v4.0.2
     nfs:
       server: ${NAS_IP}
-      path: /volume1/kubedata
+      path: /volume1/kubedata/hekate
       mountOptions:
         - nfsvers=4
         - hard

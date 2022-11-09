@@ -1,0 +1,14 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: hekate-core-system-monitoring-thanos
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./manifests/hekate/core/system-monitoring/thanos
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-clusters
