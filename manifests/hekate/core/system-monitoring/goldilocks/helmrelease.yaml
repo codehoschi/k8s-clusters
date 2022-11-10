@@ -29,20 +29,20 @@ spec:
     cleanupOnFail: true
   values:
     controller:
-      # resources:
-      #   requests:
-      #     cpu: 23m
-      #     memory: 64M
+      resources:
+        requests:
+          cpu: 23m
+          memory: 64M
       #   limits:
       #     cpu: 23m
       #     memory: 64M
 
     dashboard:
       replicaCount: 1
-      # resources:
-      #   requests:
-      #     cpu: 15m
-      #     memory: 64M
+      resources:
+        requests:
+          cpu: 15m
+          memory: 64M
       #   limits:
       #     cpu: 15m
       #     memory: 64M
