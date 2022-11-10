@@ -32,20 +32,20 @@ spec:
       resources:
         requests:
           cpu: 25m
-          memory: 32M
-      #   limits:
-      #     cpu: 23m
-      #     memory: 64M
+          memory: 64M
+        limits:
+          cpu: 25m
+          memory: 64M
 
     dashboard:
       replicaCount: 1
       resources:
         requests:
-          cpu: 25m
-          memory: 32M
-      #   limits:
-      #     cpu: 15m
-      #     memory: 64M
+          cpu: 15m
+          memory: 64M
+        limits:
+          cpu: 15m
+          memory: 64M
 
       ingress:
         enabled: true

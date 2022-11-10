@@ -55,9 +55,10 @@ spec:
       resources:
         requests:
           cpu: 15m
-          memory: 204M
+          memory: 64M
         limits:
-          memory: 247M
+          cpu: 15m
+          memory: 64M
 
       ingress:
         main:
@@ -77,12 +78,14 @@ spec:
       enabled: true
       podAnnotations:
         secret.reloader.stakater.com/reload: *secret
+
       resources:
         requests:
           cpu: 15m
           memory: 64M
         limits:
-          memory: 83M
+          cpu: 15m
+          memory: 64M
 
     compactor:
       enabled: true
@@ -90,12 +93,14 @@ spec:
         enabled: false
       podAnnotations:
         secret.reloader.stakater.com/reload: *secret
+
       resources:
         requests:
           cpu: 15m
-          memory: 183M
+          memory: 64M
         limits:
-          memory: 11G
+          cpu: 15m
+          memory: 64M
 
     storegateway:
       enabled: true
@@ -105,12 +110,14 @@ spec:
         size: 5Gi
       podAnnotations:
         configmap.reloader.stakater.com/reload: *secret
+
       resources:
         requests:
-          cpu: 15m
-          memory: 183M
+          cpu: 23m
+          memory: 64M
         limits:
-          memory: 11G
+          cpu: 23m
+          memory: 64M
 
     ruler:
       enabled: false
