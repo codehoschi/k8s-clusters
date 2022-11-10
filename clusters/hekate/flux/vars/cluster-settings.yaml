@@ -5,6 +5,7 @@ metadata:
   name: cluster-settings-hekate
   namespace: flux-system
 data:
+  TZ: Europe/Berlin
   CLUSTER_NAME: hekate
   CLUSTER_ID: "2"
   GATEWAY_IP: 10.200.0.1

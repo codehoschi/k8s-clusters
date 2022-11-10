@@ -8,28 +8,33 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: mosquitto
-      version: 6.1.12
+      chart: app-template
+      version: 1.0.1
       sourceRef:
         kind: HelmRepository
-        name: truecharts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 5m
   install:
     createNamespace: true
     remediation:
-      retries: 3
+      retries: 5
   upgrade:
     remediation:
-      retries: 3
+      retries: 5
   values:
-    #image:
-    # repository: registry
-    #tag: v0.1.4
+    image:
+      repository: tccr.io/truecharts/eclipse-mosquitto
+      tag: 2.0.15@sha256:a4b79ecfe66e7f676687745bafaacae4ab6566276ad4579cff09892875b85a7f
+      pullPolicy: IfNotPresent
+
     # persistence:
     #   enabled: true
     #   size: 10Gi
     #   storageClass: nfs-client
+    env:
+      TZ: "${TZ}"
+
     persistence:
       data:
         enabled: true
@@ -37,9 +42,6 @@ spec:
       configinc:
         enabled: true
         existingClaim: mosquitto-configinc-v1
-
-    portal:
-      enabled: true
 
     # ingress:
     #   main:
@@ -60,6 +62,7 @@ spec:
     #     #   - hosts:
     #     #       - 'mosquitto.${SECRET_DOMAIN}'
     #     #     secretName: 'mosquitto-tls'
+
     resources:
       requests:
         cpu: 50m
