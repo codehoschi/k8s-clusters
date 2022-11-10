@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: apply-hekate-cluster-core
+    - name: apply-hekate-cluster-orchestration-core
   decryption:
     provider: sops
     secretRef:
