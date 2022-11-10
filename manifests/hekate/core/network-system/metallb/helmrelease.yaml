@@ -30,8 +30,24 @@ spec:
       prometheusRule:
         enabled: true
 
+    controller:
+      resources:
+        requests:
+          cpu: 15m
+          memory: 64M
+        limits:
+          cpu: 15m
+          memory: 64M
+
     speaker:
       tolerateMaster: true
+      resources:
+        requests:
+          cpu: 23m
+          memory: 64M
+        limits:
+          cpu: 23m
+          memory: 64M
 
     existingConfigMap: "metallb-config"
     crds:
