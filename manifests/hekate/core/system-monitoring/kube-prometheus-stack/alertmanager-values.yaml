@@ -2,7 +2,7 @@
 alertmanager:
   config:
     receivers:
-      - name: 'null'
+      - name: "null"
       # - name: "discord"
       #   slack_configs:
       #     - channel: "#prometheus"
@@ -21,14 +21,14 @@ alertmanager:
       #         {{ end }}
 
     route:
-      group_by: ['alertname', 'job']
+      group_by: ["alertname", "job"]
       group_wait: 30s
       group_interval: 5m
       repeat_interval: 12h
       # receiver: "discord"
-      receiver: 'null'
+      receiver: "null"
       routes:
-        - receiver: 'null'
+        - receiver: "null"
           matchers:
             - alertname =~ "InfoInhibitor|Watchdog"
         # - receiver: "discord"
@@ -39,19 +39,19 @@ alertmanager:
 
     inhibit_rules:
       - source_match:
-          severity: 'critical'
+          severity: "critical"
         target_match:
-          severity: 'warning'
-        equal: ['alertname', 'namespace']
+          severity: "warning"
+        equal: ["alertname", "namespace"]
 
   ingress:
     enabled: true
     pathType: Prefix
     annotations:
-      kubernetes.io/ingress.class: 'traefik'
+      kubernetes.io/ingress.class: "traefik"
       # cert-manager.io/cluster-issuer: ${CLUSTER_CERT}
       # external-dns/is-public: "false"
-      hajimari.io/enable: 'true'
+      hajimari.io/enable: "true"
       hajimari.io/icon: bell-alert
       hajimari.io/appName: Alertmanager
 
@@ -71,9 +71,9 @@ alertmanager:
             requests:
               storage: 1Gi
 
-  resources:
-    requests:
-      cpu: 10m
-      memory: 50M
-    limits:
-      memory: 99M
+    resources:
+      requests:
+        cpu: 11m
+        memory: 37M
+      limits:
+        memory: 99M
