@@ -6,5 +6,5 @@ resources:
   - ./kube-system.yaml
   - ./kubelet-serving-cert-approver.yaml
   - ./network-system.yaml
-  - ./rook-ceph.yaml
+  # - ./rook-ceph.yaml
   - ./system-monitoring.yaml
