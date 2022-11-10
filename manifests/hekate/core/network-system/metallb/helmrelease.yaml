@@ -36,8 +36,8 @@ spec:
           cpu: 15m
           memory: 64M
         limits:
-          cpu: 15m
-          memory: 64M
+          cpu: 100m
+          memory: 100M
 
     speaker:
       tolerateMaster: true
@@ -46,8 +46,8 @@ spec:
           cpu: 23m
           memory: 64M
         limits:
-          cpu: 23m
-          memory: 64M
+          cpu: 100m
+          memory: 100M
 
     existingConfigMap: "metallb-config"
     crds:
