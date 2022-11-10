@@ -29,34 +29,34 @@ spec:
     cleanupOnFail: true
   values:
     controller:
-      resources:
-        requests:
-          cpu: 23m
-          memory: 64M
-        limits:
-          cpu: 23m
-          memory: 64M
+      # resources:
+      #   requests:
+      #     cpu: 23m
+      #     memory: 64M
+      #   limits:
+      #     cpu: 23m
+      #     memory: 64M
 
     dashboard:
       replicaCount: 1
-      resources:
-        requests:
-          cpu: 15m
-          memory: 64M
-        limits:
-          cpu: 15m
-          memory: 64M
+      # resources:
+      #   requests:
+      #     cpu: 15m
+      #     memory: 64M
+      #   limits:
+      #     cpu: 15m
+      #     memory: 64M
 
       ingress:
         enabled: true
-        ingressClassName: 'traefik'
+        ingressClassName: "traefik"
         annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: 'web'
-          hajimari.io/enable: 'true'
+          traefik.ingress.kubernetes.io/router.entrypoints: "web"
+          hajimari.io/enable: "true"
           hajimari.io/icon: ruler
 
         hosts:
-          - host: &host 'goldilocks.${SECRET_DOMAIN}'
+          - host: &host "goldilocks.${SECRET_DOMAIN}"
             paths:
               - path: /
                 type: Prefix
