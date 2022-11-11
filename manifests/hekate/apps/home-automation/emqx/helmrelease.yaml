@@ -64,8 +64,9 @@ spec:
       dashboard:
         enabled: true
         ingressClassName: traefik
-        hajimari.io/enable: "true"
-        hajimari.io/icon: "resistor-nodes"
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "resistor-nodes"
         path: /
         pathType: Prefix
         hosts:
