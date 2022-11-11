@@ -39,7 +39,7 @@ spec:
       enabled: true
       type: LoadBalancer
       spec:
-        loadBalancerIP: "${METALLB_TRAEFIK_ADDR}"
+        loadBalancerIP: "${LB_TRAEFIK}"
         externalTrafficPolicy: Local
     ingressClass:
       enabled: true
