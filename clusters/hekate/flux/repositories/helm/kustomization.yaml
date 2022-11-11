@@ -5,6 +5,7 @@ resources:
   - bitnami-charts.yaml
   - bjw-s-charts.yaml
   - cilium-charts.yaml
+  - emqx-charts.yaml
   - fairwinds-charts.yaml
   - grafana-charts.yaml
   - hajimari-charts.yaml
