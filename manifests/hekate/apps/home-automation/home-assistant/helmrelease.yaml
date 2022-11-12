@@ -52,6 +52,7 @@ spec:
           external-dns.home.arpa/enabled: "true"
           hajimari.io/enable: "true"
           hajimari.io/icon: "home-assistant"
+          hajimari.io/targetBlank: "true"
           traefik.ingress.kubernetes.io/router.entrypoints: "web"
         hosts:
           - host: &host "hass.${SECRET_DOMAIN}"
@@ -94,7 +95,8 @@ spec:
           ingressClassName: "traefik"
           annotations:
             hajimari.io/enable: "true"
-            hajimari.io/icon: "resistor-nodes"
+            hajimari.io/icon: "microsoft-visual-studio-code"
+            hajimari.io/targetBlank: "true"
             traefik.ingress.kubernetes.io/router.entrypoints: "web"
           hosts:
             - host: &host "hass-code.${SECRET_DOMAIN}"

@@ -66,7 +66,8 @@ spec:
         ingressClassName: traefik
         annotations:
           hajimari.io/enable: "true"
-          hajimari.io/icon: "resistor-nodes"
+          hajimari.io/icon: "radio-tower"
+          hajimari.io/targetBlank: "true"
         path: /
         pathType: Prefix
         hosts:
