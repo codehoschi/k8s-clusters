@@ -47,6 +47,8 @@ metadata:
   name: user-home-automation-zigbee2mqtt
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: user-home-automation-emqx
   interval: 10m
   path: ./manifests/hekate/apps/home-automation/zigbee2mqtt
   prune: true
