@@ -85,7 +85,7 @@ spec:
         env:
           TZ: "${TZ}"
         volumeMounts:
-          - name: config
+          - name: data
             mountPath: /data
         ingress:
           enabled: true
