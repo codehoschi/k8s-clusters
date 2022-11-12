@@ -87,3 +87,21 @@ spec:
         memory: 100Mi
       limits:
         memory: 500Mi
+
+    addons:
+      codeserver:
+        enabled: true
+        ingress:
+          enabled: true
+          ingressClassName: "traefik"
+          annotations:
+            # cert-manager.io/cluster-issuer: "letsencrypt-production"
+            # cert-manager.io/cluster-issuer: 'selfsigned-cluster-issuer'
+            hajimari.io/enable: "true"
+            hajimari.io/icon: "resistor-nodes"
+            traefik.ingress.kubernetes.io/router.entrypoints: "web"
+          hosts:
+            - host: &host "zigbee2mqtt-codeserver.${SECRET_DOMAIN}"
+              paths:
+                - path: /
+                  pathType: Prefix
