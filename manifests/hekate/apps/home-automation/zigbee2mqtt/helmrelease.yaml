@@ -36,6 +36,10 @@ spec:
         enabled: true
         existingClaim: zigbee2mqtt-config-v1
         mountPath: "/data"
+      # usb:
+      #   enabled: true
+      #   type: hostPath
+      #   hostPath: /dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2654252-if00
 
     service:
       main:
@@ -62,6 +66,16 @@ spec:
         #   - hosts:
         #       - *host
         #     secretName: 'node-red-tls'
+
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                    - zigbee-controller
 
     resources:
       requests:
