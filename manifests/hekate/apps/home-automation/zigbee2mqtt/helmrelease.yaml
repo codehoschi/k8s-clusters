@@ -91,6 +91,9 @@ spec:
     addons:
       codeserver:
         enabled: true
+        volumeMounts:
+          - name: config
+            mountPath: /data
         ingress:
           enabled: true
           ingressClassName: "traefik"
