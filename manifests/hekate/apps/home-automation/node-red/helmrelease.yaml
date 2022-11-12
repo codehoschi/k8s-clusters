@@ -2,37 +2,45 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: node-red
+  name: &app node-red
   namespace: home-automation
 spec:
   interval: 5m
   chart:
     spec:
-      chart: truecharts/node-red
-      version: 11.0.45
+      chart: app-template
+      version: 1.0.1
       sourceRef:
         kind: HelmRepository
-        name: truecharts
+        name: bjw-s-charts
         namespace: flux-system
       interval: 5m
   install:
     createNamespace: true
     remediation:
-      retries: 3
+      retries: 5
   upgrade:
     remediation:
-      retries: 3
+      retries: 5
   values:
     image:
-      # repository: registry
-      # tag: 3.0.2
+      repository: ghcr.io/k8s-at-home/node-red
+      tag: v3.0.2
+
     env:
-      TZ: "Europe/Berlin"
+      TZ: "{$TZ}"
 
     persistence:
       data:
         enabled: true
         existingClaim: node-red-data-v1
+        mountPath: "/data"
+
+    service:
+      main:
+        ports:
+          http:
+            port: 1880
 
     ingress:
       main:
@@ -45,7 +53,7 @@ spec:
           hajimari.io/icon: "resistor-nodes"
           traefik.ingress.kubernetes.io/router.entrypoints: "web"
         hosts:
-          - host: &host "node-red.${SECRET_DOMAIN}"
+          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
@@ -54,9 +62,15 @@ spec:
         #       - *host
         #     secretName: 'node-red-tls'
 
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
+
     resources:
       requests:
-        cpu: 50m
-        memory: 64Mi
+        cpu: 22m
+        memory: 164Mi
       limits:
-        memory: 96Mi
+        memory: 262Mi
