@@ -1,0 +1,71 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app zigbee2mqtt
+  namespace: home-automation
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+  values:
+    image:
+      repository: ghcr.io/koenkk/zigbee2mqtt
+      tag: 1.28.2
+
+    env:
+      TZ: "{$TZ}"
+      ZIGBEE2MQTT_DATA: /data
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: zigbee2mqtt-config-v1
+        mountPath: "/data"
+
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          # cert-manager.io/cluster-issuer: "letsencrypt-production"
+          # cert-manager.io/cluster-issuer: 'selfsigned-cluster-issuer'
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "resistor-nodes"
+          traefik.ingress.kubernetes.io/router.entrypoints: "web"
+        hosts:
+          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        # tls:
+        #   - hosts:
+        #       - *host
+        #     secretName: 'node-red-tls'
+
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        memory: 500Mi
