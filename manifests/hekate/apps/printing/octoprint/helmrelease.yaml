@@ -58,10 +58,10 @@ spec:
         mountPath: "/octoprint"
       # -- Configure a hostPathMount to mount a USB device in the container.
       # @default -- See values.yaml
-      # printer:
-      #   enabled: false
-      #   type: hostPath
-      #   hostPath: /dev/ttyACM0
+      printer:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/ttyUSB0
 
     service:
       main:
