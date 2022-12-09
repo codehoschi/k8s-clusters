@@ -33,8 +33,8 @@ spec:
                   values:
                     - octoprint
 
-    # image:
-    #   tag: 1.8.6
+    image:
+      tag: 1.8.6
 
     env:
       TZ: "{$TZ}"
@@ -63,11 +63,11 @@ spec:
       #   type: hostPath
       #   hostPath: /dev/ttyACM0
 
-    # service:
-    #   main:
-    #     ports:
-    #       http:
-    #         port: 80
+    service:
+      main:
+        ports:
+          http:
+            port: 5000
 
     ingress:
       main:
