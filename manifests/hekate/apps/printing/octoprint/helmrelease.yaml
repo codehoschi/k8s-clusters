@@ -31,7 +31,7 @@ spec:
                 - key: octoprint
                   operator: In
                   values:
-                    - true
+                    - "true"
 
     image:
       tag: 1.8.6
