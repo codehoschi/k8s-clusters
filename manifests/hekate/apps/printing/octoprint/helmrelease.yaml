@@ -28,10 +28,10 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
             - matchExpressions:
-                - key: app
+                - key: octoprint
                   operator: In
                   values:
-                    - octoprint
+                    - true
 
     image:
       tag: 1.8.6
