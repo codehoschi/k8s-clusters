@@ -45,7 +45,8 @@ spec:
       # # -- MJPG Streamer input parameters
       MJPG_STREAMER_INPUT: "-y -n -r 640x480"
       # # -- MJPG Streamer camera device
-      CAMERA_DEV: /dev/hidraw0
+      # CAMERA_DEV: /dev/hidraw0
+      CAMERA_DEV: /dev/video0
 
     securityContext:
       # -- (bool) Privileged securityContext may be required if USB devics are accessed directly through the host machine
@@ -62,10 +63,11 @@ spec:
         enabled: true
         type: hostPath
         hostPath: /dev/ttyUSB0
-      # webcam:
-      #   enabled: true
-      #   type: hostPath
-      #   hostPath: /dev/hidraw0
+      webcam:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/hidraw0
+        mountPath: /dev/video0
 
     service:
       main:
