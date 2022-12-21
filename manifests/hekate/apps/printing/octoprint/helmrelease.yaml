@@ -41,7 +41,7 @@ spec:
       OCTOPRINT_PORT: 5000
       # # -- Enable MJPG Streamer
       # # Enable this to ensure camera streaming is enabled you add a video device.
-      ENABLE_MJPG_STREAMER: "false"
+      ENABLE_MJPG_STREAMER: "true"
       # # -- MJPG Streamer input parameters
       # MJPG_STREAMER_INPUT:  # "-y -n -r 640x480"
       # # -- MJPG Streamer camera device
