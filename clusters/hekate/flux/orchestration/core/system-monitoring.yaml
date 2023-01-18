@@ -61,3 +61,17 @@ spec:
     kind: GitRepository
     name: k8s-clusters
   wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: core-system-monitoring-kubernetes-dashboard
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./manifests/hekate/core/system-monitoring/kubernetes-dashboard
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-clusters
+  wait: true
