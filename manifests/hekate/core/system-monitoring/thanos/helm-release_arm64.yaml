@@ -37,10 +37,10 @@ spec:
   #     optional: false
 
   values:
-    image:
-      registry: quay.io
-      repository: thanos/thanos
-      tag: v0.30.1
+    # image:
+    #   registry: quay.io
+    #   repository: thanos/thanos
+    #   tag: v0.30.1
     existingObjstoreSecret: &secret thanos-objstore-secret
 
     query:
@@ -96,11 +96,11 @@ spec:
 
       resources:
         requests:
-          cpu: 15m
-          memory: 64M
+          cpu: 23m
+          memory: 204M
         limits:
-          cpu: 15m
-          memory: 64M
+          cpu: 23m
+          memory: 204M
 
     storegateway:
       enabled: true
@@ -113,11 +113,11 @@ spec:
 
       resources:
         requests:
-          cpu: 23m
-          memory: 64M
+          cpu: 35m
+          memory: 204M
         limits:
-          cpu: 23m
-          memory: 64M
+          cpu: 35m
+          memory: 204M
 
     ruler:
       enabled: false
