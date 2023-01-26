@@ -45,8 +45,8 @@ spec:
       # # -- MJPG Streamer input parameters
       MJPG_STREAMER_INPUT: "-y -n -r 640x480"
       # # -- MJPG Streamer camera device
-      # CAMERA_DEV: /dev/hidraw0
-      CAMERA_DEV: /dev/video0
+      CAMERA_DEV: /dev/hidraw0
+      # CAMERA_DEV: /dev/video0
 
     securityContext:
       # -- (bool) Privileged securityContext may be required if USB devics are accessed directly through the host machine
@@ -112,29 +112,29 @@ spec:
     #   limits:
     #     memory: 262Mi
 
-    # addons:
-    #   codeserver:
-    #     enabled: true
-    #     image:
-    #       repository: ghcr.io/coder/code-server
-    #       tag: 4.8.3
-    #     env:
-    #       TZ: "${TZ}"
-    #     volumeMounts:
-    #       - name: data
-    #         mountPath: /data
-    #     ingress:
-    #       enabled: true
-    #       ingressClassName: "traefik"
-    #       annotations:
-    #         # cert-manager.io/cluster-issuer: "letsencrypt-production"
-    #         # cert-manager.io/cluster-issuer: 'selfsigned-cluster-issuer'
-    #         hajimari.io/enable: "true"
-    #         hajimari.io/icon: "microsoft-visual-studio-code"
-    #         hajimari.io/targetBlank: "true"
-    #         traefik.ingress.kubernetes.io/router.entrypoints: "web"
-    #       hosts:
-    #         - host: &host "node-red-code.${SECRET_DOMAIN}"
-    #           paths:
-    #             - path: /
-    #               pathType: Prefix
+    addons:
+      codeserver:
+        enabled: true
+        image:
+          repository: ghcr.io/coder/code-server
+          tag: 4.9.1
+        env:
+          TZ: "${TZ}"
+        volumeMounts:
+          - name: data
+            mountPath: /octoprint
+        ingress:
+          enabled: true
+          ingressClassName: "traefik"
+          annotations:
+            # cert-manager.io/cluster-issuer: "letsencrypt-production"
+            # cert-manager.io/cluster-issuer: 'selfsigned-cluster-issuer'
+            hajimari.io/enable: "true"
+            hajimari.io/icon: "microsoft-visual-studio-code"
+            hajimari.io/targetBlank: "true"
+            traefik.ingress.kubernetes.io/router.entrypoints: "web"
+          hosts:
+            - host: &host "octoprint-code.${SECRET_DOMAIN}"
+              paths:
+                - path: /
+                  pathType: Prefix
